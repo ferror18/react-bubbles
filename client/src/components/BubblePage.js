@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
+import { ColorForm } from "./ColorForm";
 
 const BubblePage = () => {
   const [colorList, setColorList] = useState([]);
@@ -19,12 +19,13 @@ const BubblePage = () => {
         
       })
       .catch((error) => console.log(`There is an error: ${error.response}`))
-  }, [])
+  },[])
 
   return (
     <>
       <ColorList colors={colorList} updateColors={setColorList} />
       <Bubbles colors={colorList} />
+      <ColorForm setColorList={setColorList}/>
     </>
   );
 };
