@@ -44,7 +44,17 @@ const ColorList = ({ props, colors, updateColors }) => {
       })
       .catch((error) => console.log(error.response))
   };
-
+  useEffect(() => {
+    axiosWithAuth()
+      .get('colors')
+      .then((response) => {
+        console.log(response.data)
+        updateColors(response.data)
+        console.log(colors);
+        
+      })
+      .catch((error) => console.log(`There is an error: ${error.response}`))
+  }, [editing])
   return (
     <div className="colors-wrap">
       <p>colors</p>
