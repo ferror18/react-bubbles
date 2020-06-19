@@ -8,7 +8,6 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, updateColors }) => {
-  console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
@@ -27,7 +26,6 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .put(`colors/${colorToEdit.id}`, colorToEdit)
       .then((response) => {
-        console.log(response)
         updateColors(colors)
         setEditing(false)
       })
@@ -38,7 +36,6 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .delete(`colors/${colorToEdit.id}`, colorToEdit)
       .then((response) => {
-        console.log(response)
         updateColors(colors.filter((item) => item.id !== color.id))
         setEditing(false)
       })
@@ -48,9 +45,7 @@ const ColorList = ({ colors, updateColors }) => {
     axiosWithAuth()
       .get('colors')
       .then((response) => {
-        console.log(response.data)
         updateColors(response.data)
-        console.log(colors);
         
       })
       .catch((error) => console.log(`There is an error: ${error.response}`))

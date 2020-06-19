@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from "react";
+import React,{ useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 export const ColorForm = ({setColorList})=>{
@@ -20,7 +20,6 @@ export const ColorForm = ({setColorList})=>{
         axiosWithAuth()
         .post('colors', newColor)
         .then(response=>{
-            console.log(response);
         })
         .catch(error=>console.log('Error==>', error)
         )
@@ -33,14 +32,6 @@ export const ColorForm = ({setColorList})=>{
         })
         })
       }
-    //   useEffect(()=>{
-    //     axiosWithAuth()
-    //     .get('colors')
-    //     .then((response) => {
-    //         console.log(response)
-    //         setColorList(response.data)
-    //     })
-    //     },[newColor])
     return (
         <form onChange={onChange} onSubmit={onSubmit}>
             <br/><br/><br/>
